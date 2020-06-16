@@ -4,6 +4,8 @@
 namespace App\Domain;
 
 
+use App\Domain\Rule\SalaryTerms;
+
 class Person
 {
 
@@ -11,19 +13,19 @@ class Person
 
     private int $age;
 
-    private int $salary;
+    private SalaryTerms $salaryTerms;
 
     private ?int $kids;
 
-    private ?bool $isUsingCorpCar;
+    private ?bool $usingCar;
 
-    public function __construct(string $name, int $age, ?int $kids, ?bool $isUsingCorpCar, int $salary)
+    public function __construct(string $name, int $age, ?int $kids, ?bool $usingCar, SalaryTerms $salaryTerms)
     {
         $this->name = $name;
         $this->age = $age;
         $this->kids = $kids;
-        $this->isUsingCorpCar = $isUsingCorpCar;
-        $this->salary = $salary;
+        $this->usingCar = $usingCar;
+        $this->salaryTerms = $salaryTerms;
     }
 
     public function getName(): string
@@ -36,9 +38,9 @@ class Person
         return $this->age;
     }
 
-    public function getSalary(): int
+    public function getSalaryTerms(): SalaryTerms
     {
-        return $this->salary;
+        return $this->salaryTerms;
     }
 
     public function getKids(): ?int
@@ -46,9 +48,9 @@ class Person
         return $this->kids;
     }
 
-    public function getIsUsingCorpCar(): ?bool
+    public function isUsingCar(): ?bool
     {
-        return $this->isUsingCorpCar;
+        return $this->usingCar;
     }
 
 

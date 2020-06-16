@@ -4,11 +4,13 @@
 namespace App\Domain;
 
 
+use App\Domain\Rule\RuleInterface;
+
 class CalculationRules
 {
     private array $rules;
 
-    public function __construct(CalculationRule ...$rules)
+    public function __construct(RuleInterface ...$rules)
     {
         $this->rules = $rules;
     }
@@ -18,26 +20,33 @@ class CalculationRules
         return $this->rules;
     }
 
-    public function setRules(CalculationRule ...$rules): void
+    public function setRules(RuleInterface ...$rules): void
     {
         $this->rules = $rules;
     }
 
-    public function addRule(CalculationRule $rule)
+    public function addRule(RuleInterface $rule)
     {
         if ( ! in_array($rule, $this->rules)) {
             $this->rules[] = $rule;
         }
     }
 
-    public function filteredRules(Person $person)
+    public function filteredAndOrderedRules(Person $person)
     {
-        return array_filter(
+        $filtered = array_filter(
             $this->rules,
-            static function (CalculationRule $rule) use ($person) {
+            static function (RuleInterface $rule) use ($person) {
                 return $rule->supports($person);
             }
         );
+        usort(
+            $filtered,
+            static function (RuleInterface $prev, RuleInterface $next) {
+                return $next->getPriority() <=> $prev->getPriority();
+            }
+        );
+        return $filtered;
     }
 
 }

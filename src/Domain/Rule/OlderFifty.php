@@ -4,26 +4,24 @@
 namespace App\Domain\Rule;
 
 
-use App\Domain\CalculationResult;
-use App\Domain\CalculationRule;
 use App\Domain\Person;
 
-class OlderFifty implements CalculationRule
+class OlderFifty implements RuleInterface
 {
-
 
     public function supports(Person $person): bool
     {
         return $person->getAge() > 50;
     }
 
-    public function modifySalary(Person $person): CalculationResult
+    public function modify(SalaryTerms $salaryTerms): SalaryTerms
     {
-        // TODO: Implement modifySalary() method.
+        return new SalaryTerms($salaryTerms->getSalary() * 1.07, $salaryTerms->getTax());
     }
 
-    public function modifyTax(Person $person): CalculationResult
+    public function getPriority(): int
     {
-        // TODO: Implement modifyTax() method.
+        return 1024;
     }
+
 }

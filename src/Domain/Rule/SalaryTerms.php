@@ -1,18 +1,20 @@
 <?php
 
 
-namespace App\Domain;
+namespace App\Domain\Rule;
 
 
-class CalculationResult
+class SalaryTerms
 {
     private int $salary;
-    private int $tax;
+    private int $tax = 20;
 
-    public function __construct(int $salary, int $tax)
+    public function __construct(int $salary, int $tax = null)
     {
         $this->salary = $salary;
-        $this->tax = $tax;
+        if (null !== $tax) {
+            $this->tax = $tax;
+        }
     }
 
     public function getSalary(): int

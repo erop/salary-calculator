@@ -7,6 +7,7 @@ namespace App\Domain\Rule;
 class SalaryTerms
 {
     private int $salary;
+
     private int $tax = 20;
 
     public function __construct(int $salary, int $tax = null)

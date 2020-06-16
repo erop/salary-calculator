@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Domain;
+namespace App\Domain\Rule;
 
 
-use App\Domain\Rule\RuleInterface;
+use App\Domain\Person;
 
 class CalculationRules
 {

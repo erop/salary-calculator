@@ -5,8 +5,8 @@ namespace App\Service;
 
 
 use App\CalculationResult;
-use App\Domain\CalculationRules;
 use App\Domain\Person;
+use App\Domain\Rule\CalculationRules;
 use App\Domain\Rule\RuleInterface;
 
 class Calculator

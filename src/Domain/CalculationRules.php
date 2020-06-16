@@ -15,23 +15,6 @@ class CalculationRules
         $this->rules = $rules;
     }
 
-    public function getRules()
-    {
-        return $this->rules;
-    }
-
-    public function setRules(RuleInterface ...$rules): void
-    {
-        $this->rules = $rules;
-    }
-
-    public function addRule(RuleInterface $rule)
-    {
-        if ( ! in_array($rule, $this->rules)) {
-            $this->rules[] = $rule;
-        }
-    }
-
     public function filteredAndOrderedRules(Person $person)
     {
         $filtered = array_filter(

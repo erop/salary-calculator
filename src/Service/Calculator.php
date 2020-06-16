@@ -18,7 +18,7 @@ class Calculator
         $this->rules = $rules;
     }
 
-    public function apply(Person $person): CalculationResult
+    public function calculate(Person $person): CalculationResult
     {
         $rules = $this->rules->filteredAndOrderedRules($person);
         $salaryTerms = $person->getSalaryTerms();

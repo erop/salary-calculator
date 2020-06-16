@@ -21,7 +21,7 @@ class CalculatorTest extends TestCase
     {
         $rules = new CalculationRules(new OlderFifty(), new MoreThanTwoKids(), new UsingCompanyCar());
         $calculator = new Calculator($rules);
-        $this->assertEquals($calculator->apply($person), $result);
+        $this->assertEquals($calculator->calculate($person), $result);
     }
 
     public function getTestData()

@@ -10,6 +10,8 @@ use App\Domain\Person;
 
 class Calculator
 {
+    private const SALARY_TAX = 20;
+
     private CalculationRules $rules;
 
     public function __construct(CalculationRules $rules)

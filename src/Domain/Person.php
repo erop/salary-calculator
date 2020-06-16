@@ -13,17 +13,17 @@ class Person
 
     private int $salary;
 
-    private ?int $children;
+    private ?int $kids;
 
     private ?bool $isUsingCorpCar;
 
-    public function __construct(string $name, int $age, int $salary, ?int $children, ?bool $isUsingCorpCar)
+    public function __construct(string $name, int $age, ?int $kids, ?bool $isUsingCorpCar, int $salary)
     {
         $this->name = $name;
         $this->age = $age;
-        $this->salary = $salary;
-        $this->children = $children;
+        $this->kids = $kids;
         $this->isUsingCorpCar = $isUsingCorpCar;
+        $this->salary = $salary;
     }
 
     public function getName(): string
@@ -41,9 +41,9 @@ class Person
         return $this->salary;
     }
 
-    public function getChildren(): ?int
+    public function getKids(): ?int
     {
-        return $this->children;
+        return $this->kids;
     }
 
     public function getIsUsingCorpCar(): ?bool

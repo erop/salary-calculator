@@ -1,0 +1,10 @@
+{
+    "name": "erop/salary-calculator",
+    "authors": [
+        {
+            "name": "Egor Ushakov",
+            "email": "egor.ushakov.ru@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -21,12 +21,22 @@ class Calculator
     public function calculate(Person $person): CalculationResult
     {
         $rules = $this->rules->filteredAndOrderedRules($person);
-        $salaryTerms = $person->getSalaryTerms();
+        $counter = 0;
+        $history = [
+            0 => [
+                'rule'   => null,
+                'result' => $salaryTerms = $person->getSalaryTerms(),
+            ],
+        ];
         foreach ($rules as $rule) {
             /** @var RuleInterface $rule */
-            $salaryTerms = $rule->modify($salaryTerms);
+            $history[++$counter] = [
+                'rule'   => \get_class($rule),
+                'result' => $salaryTerms = $rule->modify($salaryTerms),
+            ];
         }
-        $gross = $salaryTerms->getSalary();
+        $lastResult = $history[$counter]['result'];
+        $gross = $lastResult->getSalary();
         $tax = $gross * $salaryTerms->getTax() / 100;
         $net = $gross - $tax;
         return new CalculationResult($net, $tax);

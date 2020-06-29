@@ -17,7 +17,7 @@ Tax property in this class has default value but can be modified through constru
 All the rules needed for calculation should be assembled in a typed collection `CalculationRules`. 
 `Calculator` uses it to get rule collection filtered by exact Person. 
 Since Person's salary data is stored in SalaryTerms object we iterate over filtered collection of calculation rules and instatiate new `SalaryTerms` object calling `RuleInterface::modify` on each iteration.
-Last SalaryTerms object stores value of gross salary and tax rate after all rules applied and can be used for final calculation of net salary and tax.
+Last SalaryTerms object stores value of gross salary and tax rate after all rules were applied and can be used for final calculation of net salary and tax.
 The expandability of the app can be achieved by adding new classes implementing `RuleInterface` and lately using them for `CalculationRules` instantiation.
 There is a branch `es` in the repo where sort of "event sourcing" was implemented by storing history of calculations.
 

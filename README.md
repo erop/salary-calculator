@@ -1,4 +1,4 @@
-###Salary calculator
+### Salary calculator
 
 #### Build
 Execute `composer install` in project root directory.

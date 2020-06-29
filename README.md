@@ -1,10 +1,10 @@
 ###Salary calculator
 
 #### Build
-No build required 
+Execute `composer install` in project root directory.
 
 #### Run
-See example in `./public/client.php`
+See example in `./public/client.php`.
 
 #### Test
 Run tests with `./vendor/bin/phpunit` or `make test` if `make` is installed on your system.

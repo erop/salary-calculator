@@ -17,14 +17,14 @@ class CalculatorTest extends TestCase
     /**
      * @dataProvider getTestData
      */
-    public function testCalculator(Person $person, CalculationResult $result)
+    public function testCalculator(Person $person, CalculationResult $result): void
     {
         $rules = new CalculationRules(new OlderFifty(), new MoreThanTwoKids(), new UsingCompanyCar());
         $calculator = new Calculator($rules);
-        $this->assertEquals($calculator->calculate($person), $result);
+        self::assertEquals($calculator->calculate($person), $result);
     }
 
-    public function getTestData()
+    public function getTestData(): \Generator
     {
         yield [new Person('Alice', 26, 2, false, new SalaryTerms(6000)), new CalculationResult(4800, 1200)];
         yield [new Person('Bob', 52, null, true, new SalaryTerms(4000)), new CalculationResult(3024, 756)];
